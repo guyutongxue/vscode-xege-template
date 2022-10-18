@@ -1,0 +1,56 @@
+// 除非您清楚您在做什么，否则请勿修改此文件。
+// VS Code 任务设置
+{
+  "version": "2.0.0",
+  "tasks": [
+    // 更新 IntelliSense 任务
+    {
+      "label": "update intellisense",
+      "command": "xmake",
+      "args": [
+        "project",
+        "-k",
+        "compile_commands",
+        "${workspaceFolder}\\.vscode"
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    // 构建任务（Ctrl + Shift + B）
+    {
+      "label": "xmake build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "xmake",
+      "presentation": {
+        "echo": true,
+        "reveal": "never",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "problemMatcher": "$gcc" // 如果你使用 MSVC，请更改为 $msCompile
+    },
+    // 运行任务（F6）
+    {
+      "label": "run and pause",
+      "dependsOn": "xmake build",
+      "type": "pause-console",
+      "command": "xmake",
+      "args": [
+        "r"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
