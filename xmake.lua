@@ -3,6 +3,13 @@
 -- 添加远程 xege 依赖。不可以修改。
 add_requires("xege")
 
+-- 解决msvc编译器下的bug
+if is_plat("windows") then
+    add_cxflags("/utf-8")
+end
+
+set_languages("c++17")
+
 -- 项目名称。可以修改为任意名字。
 target("my-ege-project")
 
